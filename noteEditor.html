@@ -27,7 +27,7 @@
 		<div id="noticeBoard" style="width: 100vw; height: 100vh;">
 
 			<div class="noticeWidgets" kendo-droptarget k-drop="onDrop"
-				style="background: url(resources/board.jpg)">
+				style="background: lightgoldenrodyellow">
 				
 				<div data-ng-repeat="note in notes">				
 					<nomadly-notewidget note-data="note"></nomadly-notewidget>					
@@ -41,7 +41,7 @@
 			</div>
 
 			<div
-				style="background: url(resources/rightBoard.jpg); color: fffffd; padding-left: 11px">
+				style="background:brown; color: fffffd; padding-left: 11px">
 				<h3>Trivial</h3>
 				<div data-ng-repeat="note in notes">
 					<div ng-if="note.priority == 0">{{note.title}}</div>
