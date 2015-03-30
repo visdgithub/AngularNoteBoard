@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Nomadly</title>
+
+<link rel="stylesheet"
+	href="http://cdn.kendostatic.com/2015.1.318/styles/kendo.common-material.min.css" />
+<link rel="stylesheet"
+	href="http://cdn.kendostatic.com/2015.1.318/styles/kendo.material.min.css" />
+<link rel="stylesheet"
+	href="http://cdn.kendostatic.com/2015.1.318/styles/kendo.dataviz.min.css" />
+<link rel="stylesheet"
+	href="http://cdn.kendostatic.com/2015.1.318/styles/kendo.dataviz.material.min.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+<script src="http://cdn.kendostatic.com/2015.1.318/js/jquery.min.js"></script>
+<script src="http://cdn.kendostatic.com/2015.1.318/js/angular.min.js"></script>
+<script src="http://cdn.kendostatic.com/2015.1.318/js/kendo.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+<script src="app.js"></script>
+<script src="customDirectives.js"></script>
+</head>
+<body>
+	<div ng-app="nomadlyNoteBoard" ng-controller="MainController"
+		style="overflow-y: hidden;">
+		
+		<div id="noticeBoard" style="width: 100vw; height: 100vh;">
+
+			<div class="noticeWidgets" kendo-droptarget k-drop="onDrop"
+				style="background: url(resources/board.jpg)">
+				
+				<div data-ng-repeat="note in notes">				
+					<nomadly-notewidget note-data="note"></nomadly-notewidget>					
+				</div>
+				
+				<kendo-button
+					style="position: absolute; right:0; bottom:0; font-size:38px"
+					class="k-primary" ng-click="onClick1()">
+					+
+				</kendo-button>
+			</div>
+
+			<div
+				style="background: url(resources/rightBoard.jpg); color: fffffd; padding-left: 11px">
+				<h3>Trivial</h3>
+				<div data-ng-repeat="note in notes">
+					<div ng-if="note.priority == 0">{{note.title}}</div>
+				</div>
+				<h3>Important</h3>
+				<div data-ng-repeat="note in notes">
+					<div ng-if="note.priority == 1">{{note.title}}</div>
+				</div>
+				<h3>Critical</h3>
+				<div data-ng-repeat="note in notes">
+					<div ng-if="note.priority == 2">{{note.title}}</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<style>
+.draggable {
+	cursor: move;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	width: 256px;
+	height: 156px;
+	background-color: grey;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px
+		rgba(0, 0, 0, 0.16);
+}
+
+.ob-hide {
+	display: none;
+}
+
+.ob-clone {
+	
+}
+</style>
+
+
+</body>
+</html>
